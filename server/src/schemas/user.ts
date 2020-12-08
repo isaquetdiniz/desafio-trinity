@@ -12,24 +12,23 @@ const userSchema = gql`
     }
 
     input UserInput {
-        name: String!
-        email: String!
-        phone: String!
-        street: String!
-        city: String!
-        zipcode: String!
+        name: String
+        email: String
+        phone: String
+        street: String
+        city: String
+        zipcode: String
     }
 
     type Query {
-        hello: String
         getUsers: [User]!
         getUser(userId: ID!): User
     }
 
     type Mutation {
-        createUser: User!
-        updateUser(userId: ID!, newInformations: UserInput): User!
-        deleteUser(userId: ID!): String!
+        createNewUser(user: UserInput!): String
+        updateUser(userId: ID!, newInformations: UserInput!): String
+        deleteUser(userId: ID!): String
     }
 `;
 

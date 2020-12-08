@@ -1,12 +1,10 @@
+import 'dotenv/config';
+
 export = {
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "docker",
-  database: "trinity_db",
+  type: process.env.DB_TYPE,
+  url: process.env.DB_URL,
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [
      "src/models/*.ts"
   ],

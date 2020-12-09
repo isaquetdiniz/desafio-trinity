@@ -2,9 +2,8 @@
 Repositório para o desafio da trinity
 
 # Tecnologias
-- React
+- Next.js
 - Graphql
 - TypeORM
 - Postgres
-
 

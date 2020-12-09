@@ -1,6 +1,7 @@
-import { gql } from 'apollo-server';
-
-const userSchema = gql`
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const apollo_server_1 = require("apollo-server");
+const userSchema = apollo_server_1.gql `
     type User {
         id: ID!
         name: String!
@@ -31,5 +32,4 @@ const userSchema = gql`
         deleteUser(userId: ID!): String
     }
 `;
-
-export default userSchema;
+exports.default = userSchema;

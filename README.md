@@ -118,6 +118,7 @@ $ yarn dev
 # Segure CTRL+<Mouse Esquerdo> em cima do link no terminal para abrir a página em seu navegador
 
 # Prontinho, o projeto está rodando!
+
 ```
 
 ## 📝 License

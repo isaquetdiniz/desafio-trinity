@@ -6,10 +6,10 @@ module.exports = {
     synchronize: true,
     logging: false,
     entities: [
-        "src/models/*.ts"
+        "src/models/*.js"
     ],
     migrations: [
-        "src/migrations/*.ts"
+        "src/migrations/*.js"
     ],
     cli: {
         "migrationsDir": "src/database/migrations"

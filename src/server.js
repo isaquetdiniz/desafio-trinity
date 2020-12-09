@@ -16,11 +16,9 @@ const resolvers = [user_2.default];
 const server = new apollo_server_1.ApolloServer({
     typeDefs,
     resolvers,
-    dataSources: () => {
-        return {
-            userAPI: typeorm_1.getCustomRepository(User_1.AppUserRepository),
-        };
-    }
+    dataSources: () => ({
+        userAPI: typeorm_1.getCustomRepository(User_1.AppUserRepository),
+    })
 });
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
     console.log(`🚀 Server ready at ${url}`);

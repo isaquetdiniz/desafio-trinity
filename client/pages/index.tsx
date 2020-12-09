@@ -53,7 +53,7 @@ const getStaticProps: GetStaticProps = async () => {
     headers: {}
   };
 
-  const response = await axios.post('http://localhost:4000/graphql', body, options);
+  const response = await axios.post(process.env.GRAPHQL_URL, body, options);
   const { data } = response;
   return {
     props:{

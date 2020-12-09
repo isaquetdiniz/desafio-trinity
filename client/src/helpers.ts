@@ -24,7 +24,7 @@ const createNewUser = async (user) => {
       headers: {}
     };
   
-    const res = await axios.post('http://localhost:4000/graphql', body, options);
+    const res = await axios.post(process.env.GRAPHQL_URL, body, options);
     if(res.data.errors) throw new Error;
     const modal = Modal.success({
       content: 'Usuário cadastrado com sucesso!',
@@ -60,7 +60,7 @@ const EditUser = async (user) => {
       headers: {}
     };
   
-    const res = await axios.post('http://localhost:4000/graphql', body, options);
+    const res = await axios.post(process.env.GRAPHQL_URL, body, options);
     if(res.data.errors) throw new Error;
     const modal = Modal.success({
       content: 'Usuário atualizado com sucesso!',
@@ -85,7 +85,7 @@ const deleteUser = async (id: string) => {
       const options = {
         headers: {}
       };
-      await axios.post('http://localhost:4000', body, options)
+      await axios.post(process.env.GRAPHQL_URL, body, options)
       message.success('Usuário deletado!');
     } catch(err) {
       throw new err;

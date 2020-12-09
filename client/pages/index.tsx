@@ -52,7 +52,7 @@ const getStaticProps: GetStaticProps = async () => {
   const options = {
     headers: {}
   };
-
+  
   const response = await axios.post(process.env.GRAPHQL_URL, body, options);
   const { data } = response;
   return {

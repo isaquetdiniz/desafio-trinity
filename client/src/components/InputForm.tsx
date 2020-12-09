@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { useRouter } from "next/router";
 
-import { createNewUser, EditUser } from "../../src/helpers";
+import { createNewUser, EditUser } from "../helpers";
 
 const InputForm = ({ isEdit, dataUser }) => {
   const router = useRouter();

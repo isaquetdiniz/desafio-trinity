@@ -24,13 +24,14 @@ const createNewUser = async (user) => {
       headers: {}
     };
   
-    const res = await axios.post(process.env.GRAPHQL_URL, body, options);
+    const res = await axios.post('https://desafio-trinity-server.herokuapp.com', body, options);
     if(res.data.errors) throw new Error;
     const modal = Modal.success({
       content: 'Usuário cadastrado com sucesso!',
     });
     setTimeout(()=> { modal.destroy()}, 1000);
   } catch(err){
+    console.log(err);
     throw new err;
   }
 };
@@ -60,7 +61,7 @@ const EditUser = async (user) => {
       headers: {}
     };
   
-    const res = await axios.post(process.env.GRAPHQL_URL, body, options);
+    const res = await axios.post('https://desafio-trinity-server.herokuapp.com', body, options);
     if(res.data.errors) throw new Error;
     const modal = Modal.success({
       content: 'Usuário atualizado com sucesso!',
@@ -85,7 +86,7 @@ const deleteUser = async (id: string) => {
       const options = {
         headers: {}
       };
-      await axios.post(process.env.GRAPHQL_URL, body, options)
+      await axios.post('https://desafio-trinity-server.herokuapp.com', body, options)
       message.success('Usuário deletado!');
     } catch(err) {
       throw new err;

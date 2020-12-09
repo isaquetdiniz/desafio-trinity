@@ -17,7 +17,7 @@ const resolvers = [userResolvers];
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    dataSources: () => {
+    dataSources: (): any => {
         return {
             userAPI: getCustomRepository(AppUserRepository),
         }

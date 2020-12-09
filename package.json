@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --ignore-watch node_modules --notify --transpile-only src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "build": "tsc",
+    "build": "ts-node-dev --ignore-watch node_modules --notify --transpile-only src/server.ts",
     "test": "jest"
   },
   "dependencies": {

@@ -1,29 +1,7 @@
 import React from "react";
-import axios from "axios";
 import { Table, Space, Button } from "antd";
 
 const TableComponent: React.FC = ({ usersData }) => {
-  const deleteUser = async (id: string) => {
-    try {
-      const body = {
-        query: `
-              mutation {
-                  deleteUser(userId: "${id}")
-              }
-          `,
-        variables: {}
-      };
-    
-      const options = {
-        headers: {}
-      };
-      await axios.post('http://localhost:4000/graphql', body, options)
-    } catch(err) {
-      console.log(err);
-    }
-  };
-
-
   const dataSource = usersData;
 
   const columns = [
@@ -59,7 +37,7 @@ const TableComponent: React.FC = ({ usersData }) => {
           >
             Editar
           </Button>
-          <Button type="danger" onClick={() => deleteUser(record.id)}>
+          <Button type="danger" onClick={() => {}}>
             Deletar
           </Button>
         </Space>

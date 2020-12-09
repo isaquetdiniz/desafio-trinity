@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
 import { Input, Button, Form, Modal } from "antd";
+import axios from "axios";
+
+import { useRouter } from "next/router";
+
+import { createNewUser, EditUser } from "../../src/helpers";
 
 const InputForm = ({ isEdit, dataUser }) => {
   const router = useRouter();
@@ -14,84 +17,6 @@ const InputForm = ({ isEdit, dataUser }) => {
 
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
-  };
-
-  const createNewUser = async (user) => {
-    try {
-      const { name, email, phone, zipcode, street, city} = user;
-      const body = {
-        query: `
-              mutation {
-                  createNewUser(user: {
-                    name: "${name}",
-                    email: "${email}",
-                    phone: "${phone}",
-                    zipcode: "${zipcode}",
-                    street: "${street}",
-                    city: "${city}"
-                  })
-              }
-          `,
-        variables: {}
-      };
-    
-      const options = {
-        headers: {}
-      };
-    
-      const res = await axios.post('http://localhost:4000/graphql', body, options);
-      if(res.data.errors) throw new Error;
-      const modal = Modal.success({
-        content: 'Usuário cadastrado com sucesso!',
-      });
-      setTimeout(()=> { modal.destroy()}, 1000);
-      router.push('/');
-    } catch(err){
-      Modal.error({
-        title: 'Erro ao cadastrar',
-        content: 'Cheque se as informações inputadas são válidas...',
-      });
-    }
-  };
-
-  const EditUser = async (user) => {
-    try {
-      const { id, name, email, phone, zipcode, street, city} = user;
-      const body = {
-        query: `
-              mutation {
-                  updateUser(
-                    userId: "${id}",
-                    newInformations: {
-                    name: "${name}",
-                    email: "${email}",
-                    phone: "${phone}",
-                    zipcode: "${zipcode}",
-                    street: "${street}",
-                    city: "${city}"
-                  })
-              }
-          `,
-        variables: {}
-      };
-    
-      const options = {
-        headers: {}
-      };
-    
-      const res = await axios.post('http://localhost:4000/graphql', body, options);
-      if(res.data.errors) throw new Error;
-      const modal = Modal.success({
-        content: 'Usuário atualizado com sucesso!',
-      });
-      setTimeout(()=> { modal.destroy()}, 1000);
-      router.push('/');
-    } catch(err){
-      Modal.error({
-        title: 'Erro ao editar',
-        content: 'Cheque se as informações inputadas são válidas...',
-      });
-    }
   };
 
   const submitNewUser = async (values) => {
@@ -108,10 +33,11 @@ const InputForm = ({ isEdit, dataUser }) => {
           street,
           city
       });
+      router.push('/')
     } catch(err){
       Modal.error({
         title: 'Erro ao cadastrar',
-        content: 'CEP não válido!.',
+        content: 'Cheque se as informações inputadas são válidas..',
       });
     }
   };
@@ -131,15 +57,14 @@ const InputForm = ({ isEdit, dataUser }) => {
           street,
           city
       });
+      router.push('/')
     } catch(err){
       Modal.error({
         title: 'Erro ao editar',
-        content: 'CEP não válido!.',
+        content: 'Cheque se as informações inputadas são válidas..',
       });
     }
   };
-
-
 
   const submitFailed = () => {
     Modal.error({
@@ -182,28 +107,28 @@ const InputForm = ({ isEdit, dataUser }) => {
           name="name"
           rules={[{ required: true, message: "Por favor, insira seu nome!" }]}
         >
-          <Input />
+          <Input placeholder="Usuário X"/>
         </Form.Item>
         <Form.Item
           label="Email"
           name="email"
           rules={[{ required: true, message: "Por favor, insira seu email" }]}
         >
-          <Input />
+          <Input placeholder="usuario.x@gmail.com"/>
         </Form.Item>
         <Form.Item
           label="Telefone"
           name="phone"
           rules={[{ required: true, message: "Por favor, insira seu telefone" }]}
         >
-          <Input />
+          <Input placeholder="81982218902"/>
         </Form.Item>
         <Form.Item
           label="CEP"
           name="zipcode"
           rules={[{ required: true, message: "Por favor, insira seu cep!" }]}
         >
-          <Input />
+          <Input placeholder="54759060"/>
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">

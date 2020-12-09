@@ -8,7 +8,7 @@ import {
 
 import {
     PageWrapper
-} from "./styles/user-create";
+} from "../src/styles/user-create";
 
 const UserCreate = () => {
     const router = useRouter()

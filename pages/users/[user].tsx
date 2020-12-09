@@ -9,12 +9,29 @@ import { useRouter } from "next/router";
 
 import { InputForm } from "../../src/components";
 import { deleteUser } from "../../src/helpers";
-import { PageWrapper } from "../styles";
+import { PageWrapper } from "../../src/styles";
 
 const UserPage = ({ data }) => {
     const [popVisible, setPopVisible] = useState(false);
     const [editModalVisible, setEditModalVisible] = useState(false);
     const router = useRouter()
+
+    if(!data) {
+      data = { data: {
+        getUser: [
+          {
+            id: 'teste',
+            name: 'teste',
+            email: 'teste@gmail.com',
+            phone: '81982218902',
+            zipcode: '54759060',
+            street: 'Rua de teste',
+            city: 'Cidade de teste'
+          }
+        ]
+      } }
+    }
+
     const user = data.data.getUser;
 
     const confirm = () => {

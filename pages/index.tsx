@@ -12,7 +12,7 @@ import {
 
 import {
   PageWrapper 
-} from "./styles/index";
+} from "../src/styles/index";
 
 import Image from "next/image";
 

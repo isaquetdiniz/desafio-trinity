@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 import { createNewUser, EditUser } from "../helpers";
 
-const InputForm = ({ isEdit, dataUser }) => {
+const InputForm = ({ isEdit, dataUser }: any) => {
   const router = useRouter();
   const [form] = Form.useForm();
 

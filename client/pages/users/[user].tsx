@@ -1,31 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { Card } from "antd"
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Card, Popconfirm, Modal } from "antd"
+import { EditOutlined, DeleteOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 
 import { useRouter } from "next/router";
 
+import { InputForm } from "../../src/components";
 import { deleteUser } from "../../src/helpers";
 
 const UserPage = ({ data }) => {
+    const [popVisible, setPopVisible] = useState(false);
+    const [editModalVisible, setEditModalVisible] = useState(false);
+    const router = useRouter()
     const user = data.data.getUser;
+
+    const confirm = () => {
+      deleteUser(user.id)
+      setPopVisible(false)
+      router.push('/')
+    };
+
+    const cancel = () => {
+      setPopVisible(false)
+    };
+
+    const modalOn = () => {
+     setEditModalVisible(false)
+    }
+
+    const modalOff = () => {
+      setEditModalVisible(false)
+     }
+
     return (
-        <Card 
-        title="Informações do Usuário"
-        actions={[
-            <DeleteOutlined key="setting" onClick={()=> {}}/>,
-            <EditOutlined key="edit" />,
+        <>
+          <Card 
+          title="Informações do Usuário"
+          actions={[
+            <ArrowLeftOutlined key="back" onClick={()=> router.push('/')}/>,
+            <EditOutlined key="edit" onClick={()=> setEditModalVisible(true)}/>,
+            <Popconfirm
+            title="Tem certeza que deseja excluir esse usuário?"
+            visible={popVisible}
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Sim"
+            cancelText="Não"
+            >
+              <DeleteOutlined key="setting" onClick={()=> {
+                setPopVisible(true)
+              }}/>
+            </Popconfirm>
+            
           ]}
-        >
-            {user.name},
-            {user.email},
-            {user.phone},
-            {user.zipcode},
-            {user.street},
-            {user.city}
-        </Card>
+          >          
+          <p>Nome: {user.name}</p>
+          <p>Email: {user.email},</p>
+          <p>Telefone: {user.phone}</p>
+          <p>CEP: {user.zipcode}</p>
+          <p>Rua: {user.street},</p>
+          <p>Cidade: {user.city}</p>
+          </Card>
+          <Modal
+          title="Editar usuário"
+          visible={editModalVisible}
+          onOk={modalOn}
+          onCancel={modalOff}
+          footer={null}
+          >
+            <InputForm isEdit dataUser={user}/>
+          </Modal>
+        </>
     )
 };
 
@@ -62,6 +109,7 @@ const getStaticProps: GetStaticProps = async (context) => {
       query: `
             query {
                 getUser(userId: "${params.user}"){
+                  id
                   name
                   email
                   phone

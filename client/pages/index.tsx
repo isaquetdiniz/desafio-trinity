@@ -4,21 +4,35 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 
+import { Button, Space } from "antd";
+
 import {
   InputSearch,
 } from "../src/components";
 
-import { Button, Space } from "antd";
+import {
+  PageWrapper 
+} from "./styles/index";
+
+import Image from "next/image";
 
 const Home = ({ data }) => {
   const router = useRouter();
   const { getUsers: users } = data.data;
 
   return (
-    <Space>
-    <InputSearch dataUsers={users}/>
-    <Button type="primary" onClick={()=> router.push('/user-create')}>Criar usuário</Button>
-    </Space>
+    <PageWrapper>
+      <Image 
+      src="/trinity.png"
+      alt="Trinity Logo"
+      width={150}
+      height={80}
+      />
+      <Space>
+        <InputSearch dataUsers={users}/>
+        <Button type="primary" onClick={()=> router.push('/user-create')}>Criar usuário</Button>
+      </Space>
+    </PageWrapper>
   )
 }
 

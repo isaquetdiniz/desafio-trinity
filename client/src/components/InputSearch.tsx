@@ -19,7 +19,11 @@ const InputSearch = ({ dataUsers }) => {
   };
 
   return(
-    <Search placeholder="Pesquisar Usuário" onSearch={onSearch} style={{ width: 500 }} enterButton/>
+    <Search 
+    placeholder="Pesquisar Usuário" 
+    onSearch={onSearch} 
+    style={{ width: 600 }} 
+    enterButton/>
   )
 };
 

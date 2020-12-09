@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 
 import { InputForm } from "../../src/components";
 import { deleteUser } from "../../src/helpers";
+import { PageWrapper } from "../styles";
 
 const UserPage = ({ data }) => {
     const [popVisible, setPopVisible] = useState(false);
@@ -35,7 +36,7 @@ const UserPage = ({ data }) => {
      }
 
     return (
-        <>
+        <PageWrapper>
           <Card 
           title="Informações do Usuário"
           actions={[
@@ -57,10 +58,10 @@ const UserPage = ({ data }) => {
           ]}
           >          
           <p>Nome: {user.name}</p>
-          <p>Email: {user.email},</p>
+          <p>Email: {user.email}</p>
           <p>Telefone: {user.phone}</p>
           <p>CEP: {user.zipcode}</p>
-          <p>Rua: {user.street},</p>
+          <p>Rua: {user.street}</p>
           <p>Cidade: {user.city}</p>
           </Card>
           <Modal
@@ -72,7 +73,7 @@ const UserPage = ({ data }) => {
           >
             <InputForm isEdit dataUser={user}/>
           </Modal>
-        </>
+        </PageWrapper>
     )
 };
 

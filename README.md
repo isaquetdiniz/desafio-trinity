@@ -27,13 +27,34 @@
 
 ## 👨🏻‍💻 Sobre o projeto
 
+<h3>
+  Minhas Escolhas
+</h3>
+
 <p>
-    Minhas escolhas
-    Para esse desafio busquei tecnologias que não estava muito bem habituado, no front temos o framework Next.js, no back uma API no formato Graphql, utilizando TypeORM e um banco de dados PostgresSQL.
-    
-    O Resultado
-    No fim    
+  Para esse desafio busquei tecnologias que não estava muito bem habituado, no front temos o framework Next.js, no back uma API no formato Graphql, utilizando TypeORM e um banco de dados PostgresSQL. 
 </p>
+
+<h3>
+  O resultado
+</h3>
+
+<ul>
+  <li>Realizei o deploy do front na Vercel, segundo recomendação da própria documentação, e o link está disponível (aqui)[https://desafio-trinity-412lgvehq.vercel.app/]</li>
+  <li>Realizei o deploy do back na Heroku, o link está disponível (aqui)[https://desafio-trinity-server.herokuapp.com]</li>
+</ul>
+
+<h3>
+  Pontos de melhoria
+</h3>
+
+<ul>
+  <li>Melhoria no Design</li>
+  <li>Melhoria nas Tipagens</li>
+  <li>Melhoria nas mensagens de feedback</li>
+  <li>Adicionar loadings</li>
+  <li>Refatoração do código</li>
+</ul>
 
 ## 🚀 Tecnologias
 

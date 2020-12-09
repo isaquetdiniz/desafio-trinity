@@ -40,8 +40,8 @@
 </h3>
 
 <ul>
-  <li>Realizei o deploy do front na Vercel, segundo recomendação da própria documentação, e o link está disponível <a href="https://desafio-trinity-412lgvehq.vercel.app/">aqui</a></li>
-  <li>Realizei o deploy do back na Heroku, o link está disponível <a href="https://desafio-trinity-server.herokuapp.com">aqui</a></li>
+  <li>Realizei o deploy do front na Vercel, segundo recomendação da própria documentação, e o link está disponível <a href="https://desafio-trinity-412lgvehq.vercel.app/" target="__blank">aqui</a></li>
+  <li>Realizei o deploy do back na Heroku, o link está disponível <a href="https://desafio-trinity-server.herokuapp.com" target="__blank">aqui</a></li>
 </ul>
 
 <h3>

@@ -19,26 +19,25 @@
 </p>
 
 <p align="center">
-  <a href="#-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-license">License</a>
+  <a href="#-about-the-project">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Tutorial de Instalação/a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">Licença</a>
 </p>
 
-## 👨🏻‍💻 About the project
+## 👨🏻‍💻 Sobre o projeto
 
 <p>
     Minhas escolhas
-    Para esse desafio busquei tecnologias que não estava muito bem habituado, no front temos o framework Next.js, no back uma API no formato Graphql, utilizando TypeORM e um banco de dados PostgresSQL
-
-  As the application has didactic purposes, it is not complete in all its aspects, but basically it works as follows, a user can do CRUD type manipulations with Orders and Products where there is a OneToOne relationship between them, that is, each order contains only one product, but a user can have multiple orders following the OneToMany relationship.
-
-  To see the web client, click here: [Coming soon]
+    Para esse desafio busquei tecnologias que não estava muito bem habituado, no front temos o framework Next.js, no back uma API no formato Graphql, utilizando TypeORM e um banco de dados PostgresSQL.
+    
+    O Resultado
+    No fim    
 </p>
 
-## 🚀 Technologies
+## 🚀 Tecnologias
 
-Technologies that I used to develop this api
+Tecnologias que utilizei para construir essa aplicação
 
 - [Node.js](https://nodejs.org/en/)
 - [Next.js](https://nextjs.org/)
@@ -46,51 +45,59 @@ Technologies that I used to develop this api
 - [Apollo](https://www.apollographql.com/)
 - [TypeORM](https://typeorm.io/#/)
 - [PostgreSQL](https://www.postgresql.org/)
+- [ElephantSQL](https://www.elephantsql.com/)
 - [Jest](https://jestjs.io/)
 
 
-## 💻 Getting started
+## 💻 Tutorial de Instalação
 
-Import the `Insomnia.json` on Insomnia App or click on [Run in Insomnia](#insomniaButton) button
-
-### Requirements
+### Requisitos
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
-- One instance of [PostgreSQL](https://www.postgresql.org/)
 
-> Obs.: I recommend use docker
 
-**Clone the project and access the folder**
+**Clone o projeto e acesse a pasta**
 
 ```bash
 $ git clone https://github.com/isaquetdiniz/desafio-trinity.git && cd desafio-trinity
 ```
 
-**Follow the steps below**
+**Siga os passos*
 
 ```bash
-# Install the dependencies
+# Navegue até a pasta do server, instale as dependências e inicie-o com:
+$ cd server
 $ yarn
 
-# Create the instance of postgreSQL using docker
-$ docker run --name buylist_postgres -e POSTGRES_USER=postgres \
-              -e POSTGRES_DB=buylist -e POSTGRES_PASSWORD=buylist \
-              -p 5432:5432 -d postgres
+# Para esse projeto utilizei um banco de dados que já estava deployado, o ElephantSQL. Crie uma instância para ser usada aqui e copie a url.
+# Crie um .env na raiz do projeto com 
 
+DB_TYPE=postgres
+DB_URL=<sua_url>
 
-# Make sure the keys in 'ormconfig.json' to connect with your database
-# are set up correctly.
+# Agora podemos rodar o servidor com
+$ yarn start
 
-# Once the services are running, run the migrations
-$ yarn typeorm migration:run
+# A partir desse momento já é possível realizar querys para nossa API, se quiser abra o Insomnia e tente realizar um query:
+query {
+  getUsers{
+    name
+    id
+    zipcode
+  }
+}
 
-# To finish, run the api service
-$ yarn dev:server
+# Com o servidor rodando, podemos iniciar o nosso client. Para isso, abra um novo terminal e entre em /desafio-trinity/client
+# Instale as dependências com:
+$ yarn
+# E inicie o Next.js com:
+$ yarn dev
 
-# Well done, project is started!
+# Segure CTRL+<Mouse Esquerdo> em cima do link no terminal para abrir a página em seu navegador
+
+# Prontinho, o projeto está rodando!
 ```
-
 
 ## 📝 License
 

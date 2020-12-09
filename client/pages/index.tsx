@@ -1,22 +1,49 @@
+import React from "react";
+import axios from "axios";
+
+import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 
-const Home = ({ org }) => {
-  return (
-    <>
-    <h1>Hello, {org.name}</h1>
-    <h2>{org.bio}</h2>
+import {
+  InputSearch,
+} from "../src/components";
 
-    <p>Site: {org.blog}</p>
-    </>
+import { Button, Space } from "antd";
+
+const Home = ({ data }) => {
+  const router = useRouter();
+  const { getUsers: users } = data.data;
+
+  return (
+    <Space>
+    <InputSearch dataUsers={users}/>
+    <Button type="primary" onClick={()=> router.push('/user-create')}>Criar usuário</Button>
+    </Space>
   )
 }
 
 const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch('https://api.github.com/users/isaquetdiniz');
-  const data = await response.json();
+  const body = {
+    query: `
+          query {
+              getUsers{
+                id
+                email
+              }
+          }
+      `,
+    variables: {}
+  };
+
+  const options = {
+    headers: {}
+  };
+
+  const response = await axios.post('http://localhost:4000/graphql', body, options);
+  const { data } = response;
   return {
     props:{
-      org: data,
+      data,
     },
     revalidate: 5
   }
